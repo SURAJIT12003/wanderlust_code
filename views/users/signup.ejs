@@ -1,0 +1,62 @@
+<% layout("layouts/boilerplate") -%>
+
+    <div class="row mt-3">
+        <h1 class="col-6 offset-3">Signup On Wanderlust</h1>
+        <div class="col-6 offset-3">
+
+            <form action="/signup" method="post" novalidate class="needs-validation">
+
+                <div class="mb-4 mt-4">
+                    <label for="username" class="form-label">Username</label>
+
+
+                    <input type="text" name="username" 
+                        class="form-control" id="username" required>
+
+                    <div class="valid-feedback">
+                        You looks  Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Oops! Please give a Correct Username.
+                    </div>
+
+                </div>
+
+
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+
+
+                    <input type="email" name="email" 
+                        class="form-control" id="email" required>
+
+                        <div class="valid-feedback">
+                            Correct
+                        </div>
+                        <div class="invalid-feedback">
+                            Oops! Please give a Correct Email.
+                        </div>
+
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+
+
+                    <input type="password" name="password" 
+                        class="form-control" id="password" required>
+
+                        <div class="valid-feedback">
+                            Good
+                        </div>
+                        <div class="invalid-feedback">
+                            Oops! Please give a Correct Password.
+                        </div>
+
+                </div>
+
+                <button class="btn btn-success col-2 offset-5 ">Sign Up</button>
+
+            </form>
+        </div>
+    </div>
