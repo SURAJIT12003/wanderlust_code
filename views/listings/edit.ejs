@@ -4,12 +4,12 @@
 
             <h3 style="text-align: center;"><b>Edit listing</b></h3>
 
-            <form method="post" action="/listings/<%=listing.id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+            <form method="post" action="/listings/<%=listing.id%>?_method=PUT" novalidate class="needs-validation"
+                enctype="multipart/form-data">
                 <div class="mb-2">
                     <label for="title" class="form-label">Enter your title </label>
 
-                    <input type="text" name="listing[title]" value="<%=listing.title %>" class="form-control"
-                        required>
+                    <input type="text" name="listing[title]" value="<%=listing.title %>" class="form-control" required>
                     <div class="valid-feedback">
                         Your Title is So Good!
                     </div>
@@ -31,13 +31,14 @@
                 </div>
 
                 <div class="mb-2">
-                   Original Listing image <hr>
-                   <img src="<%=originalImageUrl%>" alt="loading">
+                    Original Listing image
+                    <hr>
+                    <img src="<%=originalImageUrl%>" alt="loading">
                 </div>
 
                 <div class="mb-2">
                     <label for="image" class="form-label">Upload New Listing Image </label>
-                    <input type="file" name="listing[image]"  class="form-control" >
+                    <input type="file" name="listing[image]" class="form-control">
                 </div>
 
 
@@ -45,8 +46,8 @@
 
                     <div class="mb-2 col-4">
                         <label for="price" class="form-label">Enter your Price</label>
-                        <input  min="0" type="number" name="listing[price]" value="<%=listing.price %>" class="form-control"
-                            required>
+                        <input min="0" type="number" name="listing[price]" value="<%=listing.price %>"
+                            class="form-control" required>
                         <div class="valid-feedback">
                             Good !Your Write about your charge.
                         </div>
