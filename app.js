@@ -93,9 +93,9 @@ app.use((req,res,next)=>{
     next();
 })  
 
-app.get("/", (req, res) => {
-    res.render("listings/home.ejs");
-})
+
+app.use("/",listingsRouter);
+
 app.use("/listings/companydetails",listingController.company);
 
 app.use("/listings/payment",isLoggedIn,listingController.payment); // Payment router
