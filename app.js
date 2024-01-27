@@ -94,7 +94,9 @@ app.use((req,res,next)=>{
 })  
 
 
-app.use("/",listingsRouter);
+// app.use("/",(req,res)=>{
+//     res.render("listings/home.ejs");
+// });
 
 app.use("/listings/companydetails",listingController.company);
 
@@ -105,6 +107,10 @@ app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
 
 app.use("/",userRouter);
+
+app.use("/",(req,res)=>{
+    res.redirect("/listings");
+});
 
 // Other rout 
 app.all("*", (req, res, next) => {
