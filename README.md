@@ -22,4 +22,4 @@ Current functionalities:
 🔮Future Expansion: Additional features in development to enhance user experience and platform capabilities.
 Stay tuned for exciting updates!
 
-🙏🏻Please Chek my Website - https://lnkd.in/gNd_8KHQ
+🙏🏻Please Chek my Website - [https://lnkd.in/gNd_8KHQ](https://surajit.onrender.com/listings)
