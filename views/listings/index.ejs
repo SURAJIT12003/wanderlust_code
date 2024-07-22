@@ -2,6 +2,15 @@
 
     <body>
         <style>
+            a{
+                text-decoration: none;
+            }
+            a i{
+                text-decoration: none;
+                color: black;
+                
+            }
+           
             .filter {
                 margin-top: 2rem;
                 text-align: center;
@@ -22,6 +31,10 @@
 
             .filter p {
                 font-size: 0.8rem;
+                color: black;
+            }
+            .filter p a {
+                text-decoration-line: none;
             }
 
             .tax-info {
@@ -44,60 +57,51 @@
                 <div><i class="bi bi-fire"></i></div>
 
                 <p>Trending</p>
+              
             </div>
 
             <div class="filter">
-                <div><i class="fa-solid fa-bed"></i></div>
+                <div><a href="http://localhost:7000/listings/Rooms/tags"><i class="fa-solid fa-bed"></i><p>Rooms</p></a></div>
 
-                <p>Rooms</p>
             </div>
 
             <div class="filter">
-                <div><i class="fa-solid fa-building"></i></div>
+                <div><a href="http://localhost:7000/listings/Iconic Cites/tags"><i class="fa-solid fa-building"></i><p>Iconic Cites</p></a></div>
 
-                <p>Iconic Cites</p>
             </div>
 
             <div class="filter">
-                <div><i class="fa-solid fa-mountain-sun"></i></div>
+                <div><a href="http://localhost:7000/listings/Mountain/tags"><i class="fa-solid fa-mountain-sun"></i><p>Mountain</p></a></div>
 
-                <p>Mountain</p>
             </div>
+
             <div class="filter">
-                <div><i class="fa-brands fa-fort-awesome"></i></div>
+                <div><a href="http://localhost:7000/listings/Castles/tags"><i class="fa-brands fa-fort-awesome"></i><p>Castles</p></a></div>
 
-                <p>Castles</p>
             </div>
+
             <div class="filter">
-                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <div><a href="http://localhost:7000/listings/Amazing Pools/tags"><i class="fa-solid fa-person-swimming"></i><p>Amazing Pools</p></a></div>
 
-                <p>Amazing Pools</p>
             </div>
+
             <div class="filter">
-                <div><i class="fa-solid fa-campground"></i></div>
+                <div><a href="http://localhost:7000/listings/Camping/tags"><i class="fa-solid fa-campground"></i><p>Camping</p></a></div>
 
-                <p>Camping</p>
             </div>
+
             <div class="filter">
-                <div><i class="fa-solid fa-cow"></i></div>
-
-                <p>Farms</p>
+                <div><a href="http://localhost:7000/listings/Farms/tags"><i class="fa-solid fa-cow"></i>  <p>Farms</p></a></div>
             </div>
+
             <div class="filter">
-                <div><i class="fa-solid fa-snowflake"></i></div>
-
-                <p>Arctic</p>
+                <div><a href="http://localhost:7000/listings/Arctic/tags"><i class="fa-solid fa-snowflake"></i><p>Arctic</p></a></div>
             </div>
+
             <div class="filter">
-                <div><i class="fa-solid fa-umbrella-beach"></i></div>
-
-                <p>Beach</p>
+                <div><a href="http://localhost:7000/listings/Beach/tags"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></a></div>
             </div>
-            <!-- <div class="filter">
-                <div><i class="fa-solid fa-water"></i></div>
-
-                <p>Lake</p>
-            </div> -->
+           
             <div class="tax-toggle">
                 <div class="form-check-reverse form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -155,4 +159,7 @@
 
             }
         })
-    </script>
+   </script> 
+
+
+    

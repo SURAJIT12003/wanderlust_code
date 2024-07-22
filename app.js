@@ -32,12 +32,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")))
+app.use('/scripts', express.static(path.join(__dirname, 'public/js')));
+const EventEmitter = require('events'); // Import EventEmitter if not using built-in modules
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
 
-
+const emitter = new EventEmitter()
+emitter.setMaxListeners(100)
+// or 0 to turn off the limit
+emitter.setMaxListeners(0)
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 main().then(() => {
     console.log("connect ");

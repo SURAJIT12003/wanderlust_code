@@ -1,6 +1,9 @@
 {
   "engines": {
-    "node":"20.9.0"
+    "node": "20.9.0"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.15.3",

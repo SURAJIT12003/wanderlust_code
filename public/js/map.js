@@ -1,21 +1,39 @@
+//for show map function ***
+function showMap(lat, lng, city) {
+  // Remove the previous map instance if it exists
+  if (window.myMap) {
+    window.myMap.remove();
+  }
 
-mapboxgl.accessToken = mapToken;
+  // Create a new map instance
+  window.myMap = L.map("map").setView([lat, lng], 10);
 
-//"pk.eyJ1IjoiZGVsdGEtc3R1ZHVlbnQiLCJhIjoiY2xvMDk0MTVhMTJ3ZDJrcGR5ZDFkaHl4ciJ9.Gj2VU1wvxc7rFVt5E4KLOQ"
-const map = new mapboxgl.Map({
-    container: "map", // container ID
-    // Choose from Mapbox's coreTstyles, or make your own style with Mapbox Studio
-    style: "mapbox://styles/mapbox/streets-v12", // style URL
-    center: listing.geometry.coordinates, // starting position [lng, lat]
-    zoom: 10, // starting zoom
-});
+  // Add OpenStreetMap tiles
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(window.myMap);
 
+  // Add a marker for the given city
+  L.marker([lat, lng])
+    .addTo(window.myMap)
+    .bindPopup(
+      `${city}<br>Latitude: ${lat.toFixed(4)}, Longitude: ${lng.toFixed(4)}`
+    )
+    .openPopup();
+}
 
+// Function to initialize the map and data
+function initializeListing() {
+  // Ensure listing data is available
+  if (typeof listing !== "undefined") {
+    const lat = listing.geometry.coordinates[0];
+    const lng = listing.geometry.coordinates[1];
+    const city = listing.location;
+    showMap(lat, lng, city);
+  } 
+}
 
+// Call the initialize function to setup the listing
+initializeListing();
 
-const marker = new mapboxgl.
-Marker({color:"red"})
-.setLngLat(listing.geometry.coordinates).
-setPopup(new mapboxgl.Popup({offset: 25})
-.setHTML(`<h4>${listing.title}</h4> <p> Exact Location provided after booking`)).
-addTo(map)

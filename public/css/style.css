@@ -150,5 +150,109 @@ h1 {
 
     height: 300px;
     width: 80vh;
+    border: 2px solid #fe424d;
+    border-radius:10px;
    
+}
+
+
+
+/* new card style */
+.cards {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+    width: 500px;
+    padding: 20px;
+    margin: 15px;
+    /* transition: transform 0.2s; */
+    position: relative;
+    right: 10px;
+
+}
+
+/* .cards:hover {
+    transform: scale(1.05);
+} */
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+.card-header .price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fe424d;
+    margin-left: 20px;
+}
+
+.card-content {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #777;
+}
+
+.location {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.location img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.buttons {
+    background-color: #fe424d;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.buttons:hover {
+    background-color: #ff6f61;
+    
+}
+
+.verified-icon {
+    width: 20px;  /* Adjust size as needed */
+    vertical-align: middle;  /* Align with text */
+}
+
+.verified-icon:hover::after {
+    content: 'Wanderlust Verified User'; /* Tooltip text */
+    position: absolute;
+    top: -25px; /* Adjust to move the tooltip above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black; /* Tooltip background color */
+    color: white; /* Tooltip text color */
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px; /* Adjust text size */
+    z-index: 10;
 }

@@ -45,4 +45,12 @@ router.route("/:id").
 //Edit listing **************
 router.get("/:id/edit", isLoggedIn, wrapAsync(listingController.renderEditForm));
 
+
+// Search Listing 
+router.post("/search",wrapAsync(listingController.search));
+
+
+// Tags Search Listing 
+router.get("/:tags/tags",wrapAsync(listingController.tags))
+
 module.exports = router;
