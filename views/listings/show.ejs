@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <p class="card-text">
                         <b>Hosted by  :</b> <i>
-                           <b><%= listing.owner.username%></b> 
+                           <b style="color: red; font-weight: 1000; font-size: x-large;"><%= listing.owner.username%></b> 
                         </i>
                     </p>
 
@@ -71,7 +71,8 @@
                 <!-- Review Part  -->
                 <div class="col-8 offset-3 mt-3 mb-3">
                     
-                    <% if(currUser){ %>
+                    <% if(currUser && currUser._id.valueOf()!=listing.owner._id.valueOf()){ %>
+                      <% console.log(currUser._id.valueOf(),listing.owner._id.valueOf()); %>
                         <h4>Leave a Review</h4>
                         <hr>
                         <form action="/listings/<%= listing.id%>/reviews" method="post" novalidate
@@ -147,7 +148,7 @@
                                                 <form method="post"
                                                     action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
                                                     class="mb-3 mt-3">
-                                                    <button class="btn btn-sm btn-dark">Delte</button>
+                                                    <button class="btn btn-sm btn-dark">Delete</button>
                                                 </form>
                                                 <% } %>
 
@@ -170,3 +171,4 @@
 
 
     <script src="/js/map.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
