@@ -1,5 +1,8 @@
 const User = require("../models/user");
 const { saveRedirectUrl } = require("../middleware.js");
+const Listing = require("../models/listing.js");
+const Review = require("../models/review.js");
+
 
 // render sign up form
 module.exports.renderSignupForm = (req, res) => {
@@ -57,4 +60,32 @@ module.exports.logout = (req, res, next) => {
     res.redirect("/listings");
   });
 };
+
+
+//profile 
+module.exports.profile = async  (req, res, next) => {
+  
+  
+  let userdetails = await User.findById(req.user._id);
+  //console.log(userdetails);
+  let postdetails = await Listing.find({ owner: req.user._id });
+  let allreviews     = await Review.find({ author: req.user._id });
+  //console.log(reviews);
+  
+
+  let data = {
+    username:userdetails.username,
+    email:userdetails.email,
+    total:postdetails.length,
+    reviews:allreviews.length
+  }
+
+  
+  
+  
+  res.render("./users/profile.ejs",{data})
+  
+};
+
+
 

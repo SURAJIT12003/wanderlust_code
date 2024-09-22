@@ -45,15 +45,16 @@ emitter.setMaxListeners(100)
 emitter.setMaxListeners(0)
 require('events').EventEmitter.prototype._maxListeners = 100;
 
-main().then(() => {
-    console.log("connect ");
-})
-    .catch(err => console.log(err));
+
 
 async function main() {
     await mongoose.connect(dbUrl);
 }
 
+main().then(() => {
+    console.log("connect ");
+})
+.catch(err => console.log(err));
 
 const store = MongoStore.create({
     mongoUrl:dbUrl,
@@ -126,7 +127,7 @@ app.all("*", (req, res, next) => {
 
 // Error MiddleWare 
 app.use((err, req, res, next) => {
-    let { status = 404, message = "Somehing went wrong" } = err;
+    let { status = 404, message = "Something went wrong" } = err;
     //res.send(message).status(status);
     res.render("error.ejs", { message });
 

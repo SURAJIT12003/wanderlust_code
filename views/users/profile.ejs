@@ -1,0 +1,101 @@
+<% layout("layouts/boilerplate") -%>
+<style>
+  /* body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  } */
+
+  .profile-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 350px;
+    padding: 25px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    top: 100px;
+    left: 30pc;
+  }
+
+  .profile-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .profile-photo {
+    background-color: #fe424d;
+    color: black;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-weight: bold;
+  }
+
+  .profile-info h2 {
+    margin: 10px 0 5px;
+    font-size: 24px;
+  }
+
+  .profile-info p {
+    color: #777;
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
+  .email {
+    color: #555;
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .profile-extra {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .profile-extra p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+</style>
+
+<div class="profile-card">
+  <div id="profile-photo" class="profile-photo"></div>
+  <div class="profile-info">
+    <h2 id="profile-name"><%= data.username  %></h2>
+   
+    <p class="email" id="profile-email"><%= data.email  %></p>
+  </div>
+  <div class="profile-extra">
+    <p><strong>Total House Rent:</strong> <%= data.total  %></p>
+    <p><strong>Total Reviews:</strong> <%= data.reviews  %></p>
+  </div>
+</div>
+
+<script>
+  // JavaScript to dynamically set the profile photo
+  window.onload = function () {
+    const profileNameElement = document.getElementById("profile-name");
+    const profilePhotoElement = document.getElementById("profile-photo");
+
+    // Get the first letter of the profile name
+    const profileName = profileNameElement.innerText;
+    const firstLetter = profileName.charAt(0).toUpperCase();
+
+    // Set the first letter as the profile photo content
+    profilePhotoElement.innerText = firstLetter;
+  };
+</script>
