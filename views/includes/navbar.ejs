@@ -137,9 +137,23 @@
 
       <div class="navbar-nav ms-auto">
         <% if(!currUser){ %>
-        <a class="nav-link" href="/listings/new">Airbnb Your Home</a>
-        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-        <a class="nav-link" href="/login"><b>Log in</b></a>
+       
+        <a class="nav-link newlisting" href="/listings/new">Airbnb Your Home</a>
+
+        <!-- profile section  -->
+
+        <div class="profile-container">
+          <i class="fa-solid fa-user profile-logo" id="profileLogo"></i>
+
+          <div class="dropdown-menu" id="dropdownMenu">
+            <ul>
+              <li><a class="nav-link" href="/signup"><b>Sign Up</b></a></li>
+              <li>
+                <a class="nav-link" href="/login"><b>Log in</b></a></a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <% } %> <% if(currUser){ %>
 
@@ -152,9 +166,9 @@
 
           <div class="dropdown-menu" id="dropdownMenu">
             <ul>
-              <li><a href="/profile" id="myAccount">Hi ,<b><%= currUser.username%></b></a></li>
+              <li><a href="/profile" id="myAccount">Hi ,<b><%= currUser.username%> ❤️</b></a></li>
               <li>
-                <a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>  <b>Log Out</b></a>
+                <a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>  <b>Log Out ➡️</b></a>
               </li>
             </ul>
           </div>

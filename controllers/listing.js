@@ -36,8 +36,24 @@ async function geocodeCity(city) {
 
 // All listings
 module.exports.index = async (req, res) => {
-  const allListing = await Listing.find({});
-  res.render("./listings/index.ejs", { allListing });
+  // const allListing = await Listing.find({});
+  // res.render("./listings/index.ejs", { allListing });
+  let sortOption = {};
+
+  // Check for sorting query parameter
+  if (req.query.sortBy === 'priceHigh') {
+    sortOption = { price: -1 }; // Sort by price high to low
+  } else if (req.query.sortBy === 'priceLow') {
+    sortOption = { price: 1 }; // Sort by price low to high
+  }
+
+  try {
+    const allListing = await Listing.find({}).sort(sortOption); // Fetch listings from DB
+    res.render("./listings/index.ejs", { allListing });
+  } catch (error) {
+    console.error("Error fetching listings", error);
+    res.status(500).send("Server Error");
+  }
 };
 
 
