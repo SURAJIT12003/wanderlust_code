@@ -1,0 +1,205 @@
+<% layout("layouts/boilerplate") -%>
+
+<!-- <div class="row mt-3">
+        <h1 class="col-6 offset-3">Login On Wanderlust</h1>
+        <div class="col-6 offset-3">
+
+            <form action="/login" method="post" novalidate class="needs-validation">
+
+                <div class="mb-4 mt-4">
+                    <label for="username" class="form-label">Username</label>
+
+
+                    <input type="text" name="username" 
+                        class="form-control" id="username" required>
+
+                    <div class="valid-feedback">
+                        You looks  Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Oops! Please give a Correct Username.
+                    </div>
+
+                </div>
+
+
+             
+
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+
+
+                    <input type="password" name="password" 
+                        class="form-control" id="password" required>
+
+                        <div class="valid-feedback">
+                            Good
+                        </div>
+                        <div class="invalid-feedback">
+                            Oops! Please give a Correct Password.
+                        </div>
+
+                </div>
+
+                <button class="btn btn-success col-2 offset-5 ">Log in</button>
+
+            </form>
+
+            <br>
+         
+        </div>
+    </div>  -->
+
+<style>
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .login-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 1.1);
+    text-align: center;
+    position: relative;
+    left: 50ex;
+    width: 50ex;
+  }
+
+  .logo {
+   
+    font-size: 32px;
+    color: #ff5a5f;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .input-group {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .input-group label {
+   
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    position: relative;
+    top: 10px;
+    right: 10px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .input-group input:focus {
+    border-color: #ff5a5f;
+  }
+
+  .login-button {
+    width: 30%;
+    background-color: #ff5a5f;
+    color: #ffffff;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .login-button:hover {
+    background-color: #e94e51;
+  }
+
+  .signup-link {
+    margin-top: 20px;
+  
+  }
+
+  .signup-link a {
+    color: #ff5a5f;
+    text-decoration: none;
+    
+  }
+
+  /* .signup-link a:hover {
+    text-decoration: underline;
+  } */
+</style>
+
+<div class="login-container">
+  <div class="login-card">
+    <h1 class="logo">Wanderlust</h1>
+    <h2>Welcome back</h2>
+    <p>Login to continue</p>
+
+    <form
+      action="/login"
+      method="post"
+      novalidate
+      class="needs-validation"
+      id="login-form"
+    >
+      <div class="input-group">
+        <label for="username" class="form-label">Username</label>
+
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          id="username"
+          placeholder="Enter your Username"
+          required
+        />
+
+        <div class="valid-feedback">You looks Good!</div>
+        <div class="invalid-feedback">
+          Oops! Please give a Correct Username.
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password" class="form-label">Password</label>
+
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter Your Password"
+          required
+        />
+
+        <div class="valid-feedback">Good</div>
+        <div class="invalid-feedback">
+          Oops! Please give a Correct Password.
+        </div>
+      </div>
+
+      <button type="submit" class="login-button">Login</button>
+    </form>
+
+    <p class="signup-link">Don't have an account? <a href="/signup">Sign up</a></p>
+  </div>
+</div>

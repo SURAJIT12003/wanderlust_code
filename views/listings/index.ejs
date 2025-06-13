@@ -1,0 +1,262 @@
+<% layout("layouts/boilerplate") -%>
+
+<body>
+  <style>
+    a {
+      text-decoration: none;
+    }
+    a i {
+      text-decoration: none;
+      color: black;
+    }
+
+    .filter {
+      margin-top: 2rem;
+      text-align: center;
+      margin-right: 3rem;
+      opacity: 0.7;
+    }
+
+    #filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .filter p {
+      font-size: 0.8rem;
+      color: black;
+    }
+    .filter p a {
+      text-decoration-line: none;
+    }
+
+    .tax-info {
+      display: none;
+    }
+
+    .tax-toggle {
+      border: 1px solid black;
+      border-radius: 1rem;
+      height: 3.5rem;
+      padding: 1rem;
+      margin-left: 2rem;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+
+  <div id="filters">
+    <div class="filter">
+      <div><i class="bi bi-fire"></i></div>
+
+      <p>Trending</p>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Rooms/tags"
+          ><i class="fa-solid fa-bed"></i>
+          <p>Rooms</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Iconic Cites/tags"
+          ><i class="fa-solid fa-building"></i>
+          <p>Iconic Cites</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Mountain/tags"
+          ><i class="fa-solid fa-mountain-sun"></i>
+          <p>Mountain</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="hhttps://surajit.onrender.com/listings/Castles/tags"
+          ><i class="fa-brands fa-fort-awesome"></i>
+          <p>Castles</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Amazing Pools/tags"
+          ><i class="fa-solid fa-person-swimming"></i>
+          <p>Amazing Pools</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Camping/tags"
+          ><i class="fa-solid fa-campground"></i>
+          <p>Camping</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Farms/tags"
+          ><i class="fa-solid fa-cow"></i>
+          <p>Farms</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Arctic/tags"
+          ><i class="fa-solid fa-snowflake"></i>
+          <p>Arctic</p></a
+        >
+      </div>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="https://surajit.onrender.com/listings/Beach/tags"
+          ><i class="fa-solid fa-umbrella-beach"></i>
+          <p>Beach</p></a
+        >
+      </div>
+    </div>
+
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault"
+          >Display total after Taxes</label
+        >
+      </div>
+    </div>
+
+    <!-- sorting features add -->
+    <form
+      method="GET"
+      action="/listings"
+      style="margin-left: 2rem; margin-top: 1rem"
+    >
+      <label for="sort"><strong>Sort by:</strong></label>
+      <select name="sort" id="sort" onchange="this.form.submit()">
+        <option value="">-- Select --</option>
+        <option value="price_low">Price: Low to High</option>
+        <option value="price_high">Price: High to Low</option>
+        <option value="recent">Most Recent</option>
+        <option value="reviews">Most Reviews</option>
+      </select>
+    </form>
+  </div>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let list of allListing){ %>
+    <a href="/listings/<%=list.id%>" class="listings-link">
+      <div class="card col listing-card">
+        <img
+          src="<%=list.image.url%>"
+          class="card-img-top"
+          alt="listing image"
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay"></div>
+
+        <div class="card-body">
+          <p class="card-text">
+            <b> <%=list.title%> </b> <br />
+
+            &#8377; <%=list.price.toLocaleString("en-IN")%> / Night
+            <i class="tax-info">&nbsp; &nbsp; +18%gst</i>
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <% } %>
+  </div>
+</body>
+
+<script>
+  // Get the toggle switch element
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+  // Add event listener for switch toggle
+  taxSwitch.addEventListener("click", () => {
+    // Get all the listing prices and tax information elements
+    let listings = document.querySelectorAll(".card-text");
+
+    listings.forEach((listing) => {
+      // Find the price inside the current listing's card
+      let priceText = listing
+        .querySelector("b + br")
+        .nextSibling.textContent.trim();
+      let originalPriceElement = listing.querySelector(".original-price");
+
+      // If original price is not stored, store it
+      if (!originalPriceElement) {
+        // Extract the price as a number (removing non-numeric characters)
+        let price = parseFloat(priceText.replace(/[^0-9.-]+/g, ""));
+
+        // Create a hidden span to store the original price for future reference
+        let span = document.createElement("span");
+        span.className = "original-price";
+        span.style.display = "none";
+        span.textContent = price;
+        listing.appendChild(span);
+      }
+
+      // Get the original price from the hidden span
+      let originalPrice = parseFloat(
+        listing.querySelector(".original-price").textContent
+      );
+
+      // GST rate
+      let gstRate = 0.18;
+
+      // Calculate the price with GST
+      let totalPriceWithGST = originalPrice + originalPrice * gstRate;
+
+      // Toggle the display based on the switch
+      let taxInfo = listing.querySelector(".tax-info");
+
+      if (taxSwitch.checked) {
+        // Display the updated price with GST included
+        listing.querySelector(
+          "b + br"
+        ).nextSibling.textContent = `₹ ${totalPriceWithGST.toLocaleString(
+          "en-IN"
+        )} / Night`;
+        taxInfo.style.display = "none"; // Hide the "+18%gst" text
+      } else {
+        // Revert back to original price without GST
+        listing.querySelector(
+          "b + br"
+        ).nextSibling.textContent = `₹ ${originalPrice.toLocaleString(
+          "en-IN"
+        )} / Night`;
+        taxInfo.style.display = "inline"; // Show the "+18%gst" text
+      }
+    });
+  });
+</script>

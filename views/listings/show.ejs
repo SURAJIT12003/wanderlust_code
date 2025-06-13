@@ -1,0 +1,235 @@
+<% layout("layouts/boilerplate") -%>
+    <script>
+        const mapToken = "<%=process.env.MAP_TOKEN%>";
+        const listing = <%- JSON.stringify(listing) %>;
+    </script>
+
+    <body>
+
+        <div class="row ">
+
+            <div class="col-8 offset-3 mt-3">
+
+
+                <h3>
+                    <%=listing.title %> <p>(<%=listing.tags %>)</p>
+                </h3>
+            </div>
+            
+
+            <div class="card col-6 offset-3 show-card listing-card">
+                <img src="<%=listing.image.url  %>" class="card-img-top show-img" alt="error">
+               
+                <!-- <div class="card-body">
+                    <p class="card-text">
+                        <b>Hosted by  :</b> <i>
+                           <b style="color: red; font-weight: 1000; font-size: x-large;"><%= listing.owner.username%></b> 
+                        </i>
+                    </p>
+
+                    <p class="card-text">
+                        <b>
+                            <%=listing.description %>
+                        </b>
+                    </p>
+
+                    <p class="card-text"><b>&#8377;<%=listing.price.toLocaleString("en-IN") %>/Night</b></p>
+
+                    <p class="card-text">
+                        <%=listing.location %>
+                    </p>
+
+                    <p class="card-text">
+                        <%=listing.country %>
+                    </p>
+
+                </div> -->
+
+                <!-- NEW DISPLAY PROPERTIES -->
+                <div class="cards">
+                    <div class="card-header">
+                        <h2>Hosted By - <%= listing.owner.username%> <img   title="Wanderlust Verified User" class="verified-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAWlBMVEVJrfT///9Dq/T1+v48qfT7/f80p/Njt/UwpfNQr/RXsvV0vvbX6/zn8/3j8f3L5fvv9/6Bw/es1vnA4Puj0vluuvW53PqRyviHxvebzviy2vrQ6Pvc7vwUoPKW3H2tAAAJyklEQVR4nO2d65arKBBGTYF4i9F4iTHJef/XHO10Ol6gIBSJ9Kz+Ztb5ZVq2QAFFUQS7/5GCrQvgUn8wvuoPxlf9wfgqtzDh23+Ayh3MrW/TIM36vWEBw/39B83BWREcwYTXSAgOAXARJ1Wpfz5vkvjxg/bqqILcwORdDMFDIKDKNc83XDx/wONej28iJzCHVgRTQRwVTP04q9MJ+6j4qKE3kwuYcsEyfmzeK7vCrQNYPh9nCLyxXMCc42XZRpy2kPYEVkdc8rjoHBTEAcxFVriBJmkkPaHsk1W13B+v6SWhw+SpvHQBBOuecDuum9j30xHdCNBhOkXphvJBtJ8/W6jAx6cbclHIMIdIXb4BZ9Z4Thx7tiVXDRmmQcoXzMwUi2SGYqILtSxUmDLDYYJhBGWDWQtZBXJD8ayaI9U8U2FqhXGa4kSnPD+lq7FoBZMW28KEjeZzf5WSRxHWW36eq7aFOWQGMKMhMHmKUyc1RJjCpJCmIrczGkxYaXvCK+JEe0aDyY9GrcwYpqMNNTSYvd6WvSJIbxvC1E5b2VA1tE5DgmG9YxjRkBbQJJgcm5fZiLck40yCKZx2/y+a61YwzK0tGyV6SjujwNycswwLOko7o8Cc3cPQfAEEmJtjU/ZNQ3BwmsOErBz+Y/c2Xd6KyrUpuwvaqsjZ9xufL3QGw4o+S5MkGP4Phn++NL72HSxffzZ5vmR8axIdGyMPrhaG1a2IOTwn8QBmE3oaEczeyIciZHI/3AswYbH0pG4mHkc6HBym7H1BGQWiwb0EKAw7avwpn1Z8RmkwmLDzjGWgQT2FGMzJoyb2EGAuaQSmfM9AQhO0SENDYKqtCy7XyQrm6GHFjH5PG5hD6ycM4l9Xw2DbDxtqtU1iBHNKti63VJin8BfCqI2zGsbAv7+F7Gqm/j/1mb2PY+YIo16KqmFKT01zpl4HIIOmboNvG9kNmrtm63LLhWyvITBXH80ZulGAwIQ+WgBo1QVG1zPq2IvtBL0lTOEjjHqUwWGYf8MmREh5cYdG9xYHLEXC2gew2/vn0EA3CXC/mW/GGW9lGhi32/x0xYgDQAsT/tu6+HPFuH9W42v2a7LJM7y0GpjKKxOgaWU6mKtfMJoADg1M7lUzCzShNRoYr1y02mhhDQzzaYXGdUGcOhivagZzmhvA+OVvhjMFxn08CU0ccQDoYDLPZjPDrBmlQWD2qWf1MoqnyOpMCcMu74paoAmCi9IMKGDC69EkrHoLAT+qDhzKYcrLR5oYcA4W34ynF/noKYXZnz9SLRyOTdNnr68AgZ+lPUcGc5KeCnOuuK3zMGR53b7+Oh7JJtBrmLD5SM8H0T3c+QeLORMEkkDbFUypPBXmVDyonkbpauHTAjiuOs4SJv/MzFKkszBZK98pZEtXzQLG8AgJVWJxxrS22j/l2WLfaQ5THj8xgYHVtsTNzncqFi1tBmN0TgkrpUmRgEerSOy9pSOYz63ADKag9H3gSZroxycIzusRz66ZjV9vtvU8hSkpHQai/lTXTab5HjytJHORs+1H5Nn0y0xhCkKHgfN9wpRX6IAuDxslRLaIadVMYEJCBPnT6IfIbBugk+177wmuRn6efJwJDLP+iwFMVhlqGgDp7L2m+Rkmf3ICk9s7/OaL84u834hUNnWnzp6mmxwTGIr3cj5wVDKauJWtQpjFLHP+Zyd2fgJT28Mki0ijNQ0I6bHFq6DOOOLJqx3VzLKki5YGEMncxKz6R54JKmqG0mdWp15mVgCCTrZ9l7uYPCn6DLPf9IP1wbfqSTMMlBIrpsgM8uqbE7k1Cymby/2quJfHtxkGSkm1lE3iYoIuOvk4M/RG678Jyerjh3eayYpyKnVmkBdhppPW2dyM4I2FYE1zGmi4OMkHSjcuE35Uzc12V8L4BbCaQQ51E0c32ejSOXIzQDBbTczXM5QtTODrSLBKasXK1pUnK67U65kdIwWYxGZpI4rA1dJcdPMmvPABlKQNmX8GeXDCXrhymaz8MyvvDMnKxLKV10w3d14GWKXcWPvNJAm7zMVxmrCOXLEMayOt3+zLBlFWz7LB/udDuXOW8kTy2WS+5qK1b9YQqE/s7c/OuotoZbMK6S7ArbO3nZLR81snd01MdNJYDfn+DKv12YgQGukqTJWl7XWJtJZ/L9U24M2+SUjmAl9+X0csII6qEBrklIb92CZWo6e7Y1IQ1EqDiew25/brjcXZUNY46/kcOaSBxwHYO9Jmc4FD5izQi6MxGniEhr1Vi39sWljYG5OFgONJKTSxM7118+D9fbKRN+42e9euhpdgmL3nlGdVXdSXzFl3IUc1McLGAPAgDbjDnTiuy+n63khAt/ujkBLDGr2KOQFNhh0NjF+nAWJNJqffFdesWcn+qohzzbkGDQzzqmKGiQVuAXCYi2cw+FkgDYxv57QgsYc5eFYxOnuGwrjOX0gXYdbsWytbbMe8BHP1jsU+iY6fJ2ixdobB+HSo4SGI7DICOU4s60aQIBldf196I+Sk9q9Lb4SdCFTDEFbM75RdeiP09oLtJI/10MH4mqrFKomOr4mnlkFHRjC+ZgRK1Mdof1/NWCWeuv2f+oyv6Y2QzOHIoGkdbPxWWaY3qv08QYfc6oBlBPLpXPNDtnk0vVycoZduoctmv/yZo2IsuxEOE/ae0cQdGs2iyW5SxR4dCeYxJV/zoFsrPDlKC/H6ENGLMMPsuUvvKccXemOxZUqO+pspjFLp76sua9vornZUFKXvyhkKQfrzkscLz9Xe5NqwFy45CNmoew8M8/3pPZkPoL1M7gVgzu8FUOg9W4SCcDkQ5S6N5g2u6K3u0tjl7h1rwCl3BVNgQve7BLMjZB+F2e2dD0G0G6hIMLnrk9AQbXdnk+ML6MY9S9ItlCQY54sEQbtVlwbj2OkBWFKZt8Owzu3dgJIz3J+DUd3ZbCmhPUrwVhib7BdqYRtJH4ApzWJSDW86XSXF+CzMrjK5W1ZEkclJWfI11FQYA4/0GO1eFrpLm3Ev8mdgmK6dCfj22tegGWH5OpHMh2F2J3TqDNNccbooaepNx3QY1L8OwazloG0Su73AUGQYzARAuxjRb0i+EB9uoVfvSg9NbPWt807VKrUZPw1Eh1HldQeQnThlqjRwqBPZUA5gdo3M6vKkkn7qMUGf5PGYsvZ/yAVMuL6oDuJMlbhvVzbrmPplJio7uYAZJjXxAiWtkR4Q3trFlYNxRu8wO0cwO9Y8HezAYyQ75Pfzp2CCw//1Tlgcwex2hyPnXz5hHsiTDy4UnqLHD3hGuxT8KVcwg9W9nL+cwsZLkkN1bqPhF+Sx8kfuYEa9vLaiLcaWcguzsf5gfNUfjK/6g/FV/wEAMImwUKvfDwAAAABJRU5ErkJggg==" alt="error"> </h2>
+                        <div class="price">₹<%=listing.price.toLocaleString("en-IN") %></div>
+                    </div>
+                    <div class="card-content">
+                       
+                        <%=listing.description %>
+                    </div>
+                    <div class="card-footer">
+                        <div class="location">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/place-marker.png" alt="Location Icon">
+                            <span> <%=listing.country %> ,<%=listing.location %></span>
+                        </div>
+
+                        <!-- Book payment part -->
+                        <% if( currUser && currUser._id.equals(listing.owner._id)==false){ %>
+                            
+                                <a href="/listings/payment" class="buttons">Reserve </a>
+                                
+                            
+                        <% } %>
+                       
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <% if( currUser && currUser._id.equals(listing.owner._id)){ %>
+            <div class="btns">
+                <a href="/listings/<%= listing.id%>/edit" class="btn btn-secondary col-1 offset-3">Edit </a>
+                <form method="post" action="/listings/<%=listing.id %>?_method=DELETE">
+                    <button class="btn  btn-danger  offset-5  ">Delete</button>
+                </form>
+            </div>
+            <% } %>
+
+              
+            
+
+
+          
+         
+
+                <!-- Review Part  -->
+                <div class="col-8 offset-3 mt-3 mb-3">
+                    
+                    <% if(currUser && currUser._id.valueOf()!=listing.owner._id.valueOf()){ %>
+                   
+                        <h4>Leave a Review</h4>
+                        <hr>
+                        <form action="/listings/<%= listing.id%>/reviews" method="post" novalidate
+                            class="needs-validation">
+                            <!-- <div class="mt-3 mb-3">
+                    <label for="rating">Review</label>
+                    <input class="form-range" type="range" min="1" max="5" id="rating" name="review[rating]">
+                </div> -->
+
+                            <!-- Rating part -->
+                            <div class="mt-3 mb-3">
+                                <label for="rating" class="form-label">Rating</label>
+                                <fieldset class="starability-slot">
+
+                                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
+                                        value="1" checked aria-label="No rating." />
+                                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                    <label for="first-rate1" title="Terrible">1 star</label>
+                                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                    <label for="first-rate2" title="Not good">2 stars</label>
+                                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                    <label for="first-rate3" title="Average">3 stars</label>
+                                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                    <label for="first-rate4" title="Very good">4 stars</label>
+                                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                    <label for="first-rate5" title="Amazing">5 stars</label>
+                                </fieldset>
+                            </div>
+
+                            <!-- Comment Part -->
+                            <div class="mt-3 mb-3">
+                                <label for="comment" class="form-label">Comment</label>
+                                <textarea required name="review[comment]" id="comment" cols="30" rows="5"
+                                    class="form-control"></textarea>
+                                <div class="valid-feedback">
+                                    Good !You give your review.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Oops!Please give review.
+                                </div>
+                            </div>
+
+                            <button class="btn btn-outline-primary mt-3 mb-3">Submit</button>
+                        </form>
+                        <% } %>
+
+
+
+
+                            <!-- Show all review -->
+
+                            <% if(listing.reviews.length> 0){ %>
+                                <div class="row">
+                                    <hr>
+                                    <p><b>All Reviews</b></p>
+
+                                    <% for(review of listing.reviews){ %>
+                                        <div class="card col-5 ms-3 mb-3">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@<%= review.author.username%>
+                                                </h5>
+                                                <p class="starability-result card-text" data-rating=<%=review.rating%>>
+                                                </p>
+                                                <p class="card-text">
+                                                    <%=review.comment%>
+                                                </p>
+
+                                            </div>
+
+                                            <!-- delete button  -->
+
+                                            <% if( currUser && currUser._id.equals(review.author._id)){ %>
+                                                <form method="post"
+                                                    action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
+                                                    class="mb-3 mt-3">
+                                                    <button class="btn btn-sm btn-dark">Delete</button>
+                                                </form>
+                                                <% } %>
+
+                                        </div>
+
+                                        <% } %>
+                                </div>
+                                <% } %>
+
+
+                </div>
+
+                <div class="col-8 offset-3 mb-3">
+                    <h3>Where you'll be </h3>
+                    <div id="map"></div>
+
+                </div>
+    </body>
+
+   
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- <script>
+        
+         const lat = listing.geometry.coordinates[0];
+
+        const lng = listing.geometry.coordinates[1];
+        const city = listing.location;
+        
+        showMap(lat,lng,city);
+        
+        function showMap(lat, lng, city) {
+        // Remove the previous map instance if it exists
+        if (window.myMap) {
+            window.myMap.remove();
+        }
+
+        // Create a new map instance
+        window.myMap = L.map("map").setView([lat, lng], 10);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(window.myMap);
+
+        // Add a marker for the given city
+        L.marker([lat, lng])
+            .addTo(window.myMap)
+            .bindPopup(
+            `${city}<br>Latitude: ${lat.toFixed(4)}, Longitude: ${lng.toFixed(4)}`
+            )
+            .openPopup();
+        }
+        
+        
+    </script> -->
+
+ 
+    <script src="/js/map.js"></script>

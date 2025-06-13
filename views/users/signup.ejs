@@ -1,0 +1,167 @@
+<% layout("layouts/boilerplate") -%>
+
+<style>
+  body {
+    
+    background-color: #f7f7f7;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+
+  .form-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .form-card h1 {
+    color: #ff5a5f;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .form-card h2 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .form-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus {
+    border-color: #ff5a5f;
+  }
+
+  .form-group .valid-feedback, 
+  .form-group .invalid-feedback {
+    font-size: 12px;
+    margin-top: 5px;
+    color: green;
+  }
+
+  .form-group .invalid-feedback {
+    color: red;
+  }
+
+  .submit-button {
+    width: 100%;
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .submit-button:hover {
+    background-color: #e94e51;
+  }
+
+  .signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .signup-link a {
+    color: #ff5a5f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="form-container">
+  <div class="form-card">
+    <h1>Wanderlust</h1>
+    <h2>Create Your Account</h2>
+    <p>Fill in the form below to sign up</p>
+
+    <form action="/signup" method="post" novalidate class="needs-validation" id="signup-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter your username"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter a valid username.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+        <div class="valid-feedback">Email is valid!</div>
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+        <div class="valid-feedback">Good to go!</div>
+        <div class="invalid-feedback">Please enter a valid password.</div>
+      </div>
+
+      <button type="submit" class="submit-button">Sign Up</button>
+    </form>
+
+    <p class="signup-link">Already have an account? <a href="/login">Log in</a></p>
+  </div>
+</div>
